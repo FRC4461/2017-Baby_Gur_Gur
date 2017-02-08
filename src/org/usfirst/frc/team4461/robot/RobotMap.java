@@ -5,11 +5,16 @@ public class RobotMap {
 	
 	//Drivebase Motors
 	m1 = 1,
-//	m2 = 2,
-	//m3 = 3,
+	m2 = 2,
+//	m3 = 3,
 	m4 = 4,
-	//m5 = 5,
-	//m6 = 6,
+//	m5 = 5,
+//	m6 = 6,
+	
+	//Hopper Motors
+	hm1 = 7,
+//	hm2 = 8,
+//	hm3 = 9,
 	
 	//Joysticks
 	lJoy = 0,
@@ -24,10 +29,10 @@ public class RobotMap {
 	//Right Joystick Button
 	rb1 = 1,
 	rb2 = 2,
-	rJb3 = 3,
+	rb3 = 3,
 	rb4 = 4; // LAST ONE HAS TO BE ;
 
 	public RobotMap(){
-		System.out.println("RobotMap Initilization Complete!!!");	
+		System.out.println("4461: RobotMap Init");
 	}
 }

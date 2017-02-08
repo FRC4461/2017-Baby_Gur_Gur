@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4461.robot.commands.Drive;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
+import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
 
 public class Robot extends IterativeRobot {
 
 	public static Chassis Chassis;
+	public static HopperMotors HopperMotors;
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -20,14 +22,16 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotInit() {
+		HopperMotors = new HopperMotors();
 		Chassis = new Chassis();
 		oi = new OI();
+		
 		System.out.println("4461: Robot robotInit.");
 	}
 
 	@Override
 	public void disabledInit() {
-		System.out.println("4461: Robot in disabled mode.");
+		System.out.println("4461: Robot disabled.");
 	}
 
 	@Override

@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Chassis extends Subsystem {
 	CANTalon m1 = new CANTalon(RobotMap.m1);
 //	CANTalon m2 = new CANTalon(RobotMap.m2);
-	//CANTalon m3 = new CANTalon(RobotMap.m3);
+//	CANTalon m3 = new CANTalon(RobotMap.m3);
 	CANTalon m4 = new CANTalon(RobotMap.m4);
-	//CANTalon m5 = new CANTalon(RobotMap.m5);
-	//CANTalon m6 = new CANTalon(RobotMap.m6);
+//	CANTalon m5 = new CANTalon(RobotMap.m5);
+//	CANTalon m6 = new CANTalon(RobotMap.m6);
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new Drive());
@@ -20,7 +20,7 @@ public class Chassis extends Subsystem {
 	}
 	
 	public void Run() {
-		System.out.println("4461: Left Joystick Y "+Robot.oi.lJoyGetY()+", Right Joystick Y "+ Robot.oi.rJoyGetY());
+//		System.out.println("4461: Left Joystick Y "+Robot.oi.lJoyGetY()+", Right Joystick Y "+ Robot.oi.rJoyGetY());
 		if (Robot.oi.lJoyGetY() > -.05 && Robot.oi.lJoyGetY() <.05){
 		m1.set(0);
 //		m2.set(0);
@@ -36,8 +36,8 @@ public class Chassis extends Subsystem {
 //		m2.set(-Robot.oi.lJoyGetY());
 //		m3.set(-Robot.oi.lJoyGetY());
 		m4.set(-Robot.oi.rJoyGetY());
-//		m5.set(-Robot.oi.lJoyGetY());
-//		m6.set(-Robot.oi.lJoyGetY());
+//		m5.set(-Robot.oi.rJoyGetY());
+//		m6.set(-Robot.oi.rJoyGetY());
 		}
 	}
 	
