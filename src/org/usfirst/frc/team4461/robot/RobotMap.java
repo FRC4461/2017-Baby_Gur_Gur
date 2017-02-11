@@ -45,6 +45,6 @@ public class RobotMap {
 	ChassisEncoder6 = 6;	// LAST ONE HAS TO BE ;
 
 	public RobotMap(){
-		System.out.println("4461: RobotMap Init");
+		Util.timeStamp("RobotMap Init");
 	}
 }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4461.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4461.robot.OI;
 import org.usfirst.frc.team4461.robot.Robot;
 
 
@@ -15,7 +16,9 @@ public class Drive extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.Chassis.Run();
+    	double lSpeed = OI.lJoy.getY();
+    	double rSpeed = OI.rJoy.getY();
+		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 
 	@Override

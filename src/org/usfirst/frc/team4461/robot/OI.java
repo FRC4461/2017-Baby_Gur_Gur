@@ -6,7 +6,6 @@ import org.usfirst.frc.team4461.robot.commands.HopperTake;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-
 public class OI {
 	//Joysticks
 	public static Joystick lJoy, rJoy;
@@ -17,8 +16,9 @@ public class OI {
 	//Right Joystick Buttons
 	public static JoystickButton rb1, rb2, rb3, rb4;
 	
+	
 	public OI(){
-		System.out.println("4461: Start OI Init.");
+		Util.timeStamp("Start OI Init.");
 		
 		lJoy = new Joystick(RobotMap.lJoy);
 		rJoy = new Joystick(RobotMap.rJoy);
@@ -31,7 +31,7 @@ public class OI {
 		rb1.toggleWhenPressed(new HopperShoot());
 		rb2.toggleWhenPressed(new HopperTake());
 		
-		System.out.println("4461: Complete OI Init.");
+		Util.timeStamp("Complete OI Init.");
 		
 	}
 	
