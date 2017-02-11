@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team4461.robot.commands.Drive;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
@@ -22,6 +21,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void robotInit() {
+		
 		HopperMotors = new HopperMotors();
 		Chassis = new Chassis();
 		oi = new OI();

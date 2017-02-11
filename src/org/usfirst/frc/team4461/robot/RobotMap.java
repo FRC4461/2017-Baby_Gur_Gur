@@ -6,15 +6,19 @@ public class RobotMap {
 	//Drivebase Motors
 	m1 = 1,
 	m2 = 2,
-//	m3 = 3,
+	m3 = 3,
 	m4 = 4,
-//	m5 = 5,
-//	m6 = 6,
+	m5 = 5,
+	m6 = 6,
 	
 	//Hopper Motors
 	hm1 = 7,
-//	hm2 = 8,
-//	hm3 = 9,
+	hm2 = 8,
+	hm3 = 9,
+	
+	//Encoder
+	Encoder1_A = 10,
+	Encoder1_B = 11,
 	
 	//Joysticks
 	lJoy = 0,
@@ -30,7 +34,15 @@ public class RobotMap {
 	rb1 = 1,
 	rb2 = 2,
 	rb3 = 3,
-	rb4 = 4; // LAST ONE HAS TO BE ;
+	rb4 = 4,
+	
+	//Chassis Encoders
+	ChassisEncoder1 = 1,
+	ChassisEncoder2 = 2,
+	ChassisEncoder3 = 3,
+	ChassisEncoder4 = 4,
+	ChassisEncoder5 = 5,
+	ChassisEncoder6 = 6;	// LAST ONE HAS TO BE ;
 
 	public RobotMap(){
 		System.out.println("4461: RobotMap Init");

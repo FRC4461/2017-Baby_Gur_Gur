@@ -1,12 +1,11 @@
 package org.usfirst.frc.team4461.robot.commands;
 
 import org.usfirst.frc.team4461.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class Hopper extends Command {	
-	public Hopper() {
+public class HopperShoot extends Command {	
+	public HopperShoot() {
         requires(Robot.HopperMotors);
     }
 
@@ -16,7 +15,6 @@ public class Hopper extends Command {
 
     @Override
     protected void execute() {
-    	Robot.HopperMotors.Take();
     	Robot.HopperMotors.Shoot();
     }
 
