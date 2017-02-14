@@ -1,50 +1,44 @@
 package org.usfirst.frc.team4461.robot;
 
 public class RobotMap {
-	public static int //This is what applies to all of them.
+	
+	/**
+	 * Public static final int
+	 * RobotMap
+	 */
+	public static final int
 	
 	//Drivebase Motors
-	m1 = 1,
-	m2 = 2,
-	m3 = 3,
-	m4 = 4,
-	m5 = 5,
-	m6 = 6,
+	CANTalon1 = 1,
+	CANTalon2 = 2,
+	CANTalon3 = 3,
+	CANTalon4 = 4,
+	CANTalon5 = 5,
+	CANTalon6 = 6,
 	
 	//Hopper Motors
-	hm1 = 7,
-	hm2 = 8,
-	hm3 = 9,
-	
-	//Encoder
-	Encoder1_A = 10,
-	Encoder1_B = 11,
+	CANTalon7 = 7,
+	CANTalon8 = 8,
+	CANTalon9 = 9,
 	
 	//Joysticks
-	lJoy = 0,
-	rJoy = 1,
+	leftJoystick = 0,
+	rightJoystick = 1,
 	
 	//Left Joystick Buttons
-	lb1 = 1,
-	lb2 = 2,
-	lb3 = 3,
-	lb4 = 4,
+	leftButton1 = 1,
+	leftButton2 = 2,
+	leftButton3 = 3,
+	leftButton4 = 4,
 	
 	//Right Joystick Button
-	rb1 = 1,
-	rb2 = 2,
-	rb3 = 3,
-	rb4 = 4,
-	
-	//Chassis Encoders
-	ChassisEncoder1 = 1,
-	ChassisEncoder2 = 2,
-	ChassisEncoder3 = 3,
-	ChassisEncoder4 = 4,
-	ChassisEncoder5 = 5,
-	ChassisEncoder6 = 6;	// LAST ONE HAS TO BE ;
+	rightButton1 = 1,
+	rightButton2 = 2,
+	rightButton3 = 3,
+	rightButton4 = 4;// LAST ONE HAS TO BE ;
 
 	public RobotMap(){
 		Util.timeStamp("RobotMap Init");
-	}
-}
+	}//End RobotMap
+	
+}//End Class

@@ -8,52 +8,60 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Chassis extends Subsystem {
-
-	private CANTalon motor1, motor2, motor3, motor4, motor5, motor6;
+	
+	//Initializing Motors
+	private CANTalon leftMotor1,
+					 leftMotor2,
+					 leftMotor3,
+					 rightMotor1,
+					 rightMotor2,
+					 rightMotor3;
 	
 	public Chassis(){
-		
-		motor1 = new CANTalon(RobotMap.m1);
-		motor2 = new CANTalon(RobotMap.m2);
-		motor3 = new CANTalon(RobotMap.m3);
-		motor4 = new CANTalon(RobotMap.m4);
-		motor5 = new CANTalon(RobotMap.m5);
-		motor6 = new CANTalon(RobotMap.m6);
-		
-	}
+		leftMotor1 = new CANTalon(RobotMap.CANTalon1);
+		leftMotor2 = new CANTalon(RobotMap.CANTalon2);
+		leftMotor3 = new CANTalon(RobotMap.CANTalon3);
+		rightMotor1 = new CANTalon(RobotMap.CANTalon4);
+		rightMotor2 = new CANTalon(RobotMap.CANTalon5);
+		rightMotor3 = new CANTalon(RobotMap.CANTalon6);
+	}//End Chassis
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new Drive());
 		Util.timeStamp("Chassis.java");
-	}
+	}//End DefaultCommand
 	
 	public void Run(double lSpeed, double rSpeed) {
+		
 		if (lSpeed > -.05 && lSpeed <.05){
-		motor1.set(0);
-		motor2.set(0);
-		motor3.set(0);
-		}
+			leftMotor1.set(0);
+			leftMotor2.set(0);
+			leftMotor3.set(0);
+		}//End If
+		
 		else if(rSpeed > -.05 && rSpeed <.05){
-		motor4.set(0);
-		motor5.set(0);
-		motor6.set(0);
-		}
+			rightMotor1.set(0);
+			rightMotor2.set(0);
+			rightMotor3.set(0);
+		}//End Else if
+		
 		else{
-		motor1.set(lSpeed);
-		motor2.set(lSpeed);
-		motor3.set(lSpeed);
-		motor4.set(rSpeed);
-		motor5.set(rSpeed);
-		motor6.set(rSpeed);
-		}
-	}
+			leftMotor1.set(lSpeed);
+			leftMotor2.set(lSpeed);
+			leftMotor3.set(lSpeed);
+			rightMotor1.set(rSpeed);
+			rightMotor2.set(rSpeed);
+			rightMotor3.set(rSpeed);
+		}//End Else
+		
+	}// End Run
 
 	public void Stop(){
-		motor1.set(0);
-		motor2.set(0);
-		motor3.set(0);
-		motor4.set(0);
-		motor5.set(0);
-		motor6.set(0);
-	}
-	
-}
+		leftMotor1.set(0);
+		leftMotor2.set(0);
+		leftMotor3.set(0);
+		rightMotor1.set(0);
+		rightMotor2.set(0);
+		rightMotor3.set(0);
+	}// End Stop
+}//End Class

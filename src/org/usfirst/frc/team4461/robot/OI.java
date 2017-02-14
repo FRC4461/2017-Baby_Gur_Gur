@@ -7,39 +7,48 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
+	
 	//Joysticks
-	public static Joystick lJoy, rJoy;
+	public static Joystick leftJoystick, 
+						   rightJoystick,
+						   XBOXController;
+	
 	
 	//Left Joystick Buttons
-	public static JoystickButton lb1, lb2, lb3, lb4;
+	public static JoystickButton leftButton1, 
+								 leftButton2, 
+								 leftButton3, 
+								 leftButton4;
 				   
 	//Right Joystick Buttons
-	public static JoystickButton rb1, rb2, rb3, rb4;
+	public static JoystickButton rightButton1, 
+								 rightButton2,
+								 rightButton3,
+								 rightButton4;
 	
 	
 	public OI(){
 		Util.timeStamp("Start OI Init.");
 		
-		lJoy = new Joystick(RobotMap.lJoy);
-		rJoy = new Joystick(RobotMap.rJoy);
+		leftJoystick = new Joystick(RobotMap.leftJoystick);
+		rightJoystick = new Joystick(RobotMap.rightJoystick);
 		
-		lb1 = new JoystickButton(lJoy, RobotMap.lb1);
-		lb2 = new JoystickButton(lJoy, RobotMap.lb2);
-		rb1 = new JoystickButton(rJoy, RobotMap.rb1);
-		rb2 = new JoystickButton(rJoy, RobotMap.rb2);
+		leftButton1 = new JoystickButton(leftJoystick, RobotMap.leftButton1);
+		leftButton2 = new JoystickButton(leftJoystick, RobotMap.leftButton2);
+		rightButton1 = new JoystickButton(rightJoystick, RobotMap.rightButton1);
+		rightButton2 = new JoystickButton(rightJoystick, RobotMap.rightButton2);
 		
-		rb1.toggleWhenPressed(new HopperShoot());
-		rb2.toggleWhenPressed(new HopperTake());
+		rightButton1.toggleWhenPressed(new HopperShoot());
+		rightButton2.toggleWhenPressed(new HopperTake());
 		
 		Util.timeStamp("Complete OI Init.");
-		
-	}
+	}//End OI
 	
 	public double lJoyGetY(){
-		return lJoy.getY();
+		return leftJoystick.getY();
 	}
 	
 	public double rJoyGetY(){
-		return rJoy.getY();
+		return rightJoystick.getY();
 	}
-}
+}//End Class

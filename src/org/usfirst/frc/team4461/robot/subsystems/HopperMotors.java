@@ -6,28 +6,30 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class HopperMotors extends Subsystem {
 	
-	CANTalon hm1 = new CANTalon(RobotMap.hm1);
-	CANTalon hm2 = new CANTalon(RobotMap.hm2);
-	CANTalon hm3 = new CANTalon(RobotMap.hm3);
+	//Initializing Talons
+	CANTalon Shooter = new CANTalon(RobotMap.CANTalon7);
+	CANTalon Shooter2 = new CANTalon(RobotMap.CANTalon8);
+	CANTalon Intake = new CANTalon(RobotMap.CANTalon9);
 	
     public void initDefaultCommand() {
     	System.out.println("4461: Hopper.java");
-    }
+    }//End Default Command
     
     public void Take(){
-    	hm3.set(-.8);
-    }
+    	Intake.set(-.8);
+    }//End Take
     
     public void Shoot(){
     	System.out.println("4461: Hopper.java");
     	double Speed = .5;
-    	hm1.set(Speed);
-    	hm2.set(Speed);
-}
+    	Shooter.set(Speed);
+    	Shooter2.set(Speed);
+    }//End Shoot
     
     public void Stop(){
-    	hm1.set(0);
-    	hm2.set(0);
-    	hm3.set(0);
-    }
-}
+    	Shooter.set(0);
+    	Shooter2.set(0);
+    	Intake.set(0);
+    }//End Stop
+    
+}//End Class

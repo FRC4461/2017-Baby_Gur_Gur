@@ -28,46 +28,48 @@ public class Robot extends IterativeRobot {
 		Chassis = new Chassis();
 		oi = new OI();
 		Util.timeStamp("Robot robotInit.");
-	}
+	}//End robotInit
 
 	@Override
 	public void disabledInit() {
 		Util.timeStamp("Robot disabled.");
-	}
+	}//End disabledInit
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-	}
+	}//End disabledPeriodic
 
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = new Autonomous();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-	}
+	}//End autonomousInit
 	
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-	}
+	}//End autonomousPeriodic
 
 	@Override
 	public void teleopInit() {
+		
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
-		}
-	}
+		}//End If
+		
+	}//End teleopInit
 
 	@Override
 	public void teleopPeriodic() {
 		chooser.addDefault("Default Drive Command", new Drive());
 		SmartDashboard.putData("Auto mode", chooser);
 		Scheduler.getInstance().run();
-	}
+	}//End teleopPeriodic
 
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
-	}
-}
+	}//End testPeriodic
+}//End Class
