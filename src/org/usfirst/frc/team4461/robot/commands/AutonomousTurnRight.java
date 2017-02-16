@@ -5,14 +5,14 @@ import org.usfirst.frc.team4461.robot.Robot;
 import org.usfirst.frc.team4461.robot.Util;
 
 
-public class AutonomousTurnLeft extends Command {
+public class AutonomousTurnRight extends Command {
 	double Time = 0;
 	double timeRun = 0;
 	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
-	public AutonomousTurnLeft(double timeRunArg){
+	public AutonomousTurnRight(double timeRunArg){
 		timeRun = timeRunArg;
 	}
 
@@ -24,8 +24,8 @@ public class AutonomousTurnLeft extends Command {
 
 	@Override
 	protected void execute() {
-    	double lSpeed = 1;
-    	double rSpeed = -1;
+    	double lSpeed = -1;
+    	double rSpeed = 1;
 		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 

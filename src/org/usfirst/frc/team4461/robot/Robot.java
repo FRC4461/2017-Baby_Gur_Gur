@@ -6,9 +6,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
 
-import org.usfirst.frc.team4461.robot.commands.Autonomous;
+import org.usfirst.frc.team4461.robot.commands.BlueShoot;
 import org.usfirst.frc.team4461.robot.commands.Drive;
+import org.usfirst.frc.team4461.robot.commands.RedShoot;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
 
@@ -19,14 +21,20 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> autoChooser;
 
 	@Override
 	public void robotInit() {
-//		chooser.addDefault("Starting 1", new Autonomous());
+		autoChooser = new SendableChooser<Command>();
+		autoChooser.addDefault("Red Shoot", new RedShoot());
+		autoChooser.addDefault("Blue Shoot", new BlueShoot());
+		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 		HopperMotors = new HopperMotors();
 		Chassis = new Chassis();
 		oi = new OI();
+		CameraServer.getInstance().startAutomaticCapture(0);
+		CameraServer.getInstance().startAutomaticCapture(1);
+				
 		Util.timeStamp("Robot robotInit.");
 	}//End robotInit
 
@@ -42,7 +50,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new Autonomous();
+		autonomousCommand = (Command) autoChooser.getSelected();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}//End autonomousInit
@@ -63,8 +71,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		chooser.addDefault("Default Drive Command", new Drive());
-		SmartDashboard.putData("Auto mode", chooser);
+		autoChooser.addDefault("Tank Drive", new Drive());
+		SmartDashboard.putData("Auto mode", autoChooser);
 		Scheduler.getInstance().run();
 	}//End teleopPeriodic
 

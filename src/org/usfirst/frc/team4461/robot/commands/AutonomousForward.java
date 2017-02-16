@@ -14,7 +14,6 @@ public class AutonomousForward extends Command {
 	 */
 	public AutonomousForward(double timeRunArg){
 		timeRun = timeRunArg;
-	requires(Robot.Chassis);
 	}
 
 	@Override

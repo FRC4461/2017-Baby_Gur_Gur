@@ -14,7 +14,6 @@ public class AutonomousShoot extends Command {
 	 */
 	public AutonomousShoot(double timeRunArg){
 		timeRun = timeRunArg;
-	requires(Robot.Chassis);
 	}
 
 	@Override
