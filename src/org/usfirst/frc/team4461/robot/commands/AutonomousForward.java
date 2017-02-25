@@ -6,32 +6,31 @@ import org.usfirst.frc.team4461.robot.Util;
 
 
 public class AutonomousForward extends Command {
-	double Time = 0;
-	double timeRun = 0;
+	double distance1 = 0;
+	double distance2 = 0;
 	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
-	public AutonomousForward(double timeRunArg){
-		timeRun = timeRunArg;
+	public AutonomousForward(double distanceArg, double distanceArg2){
+		distance1 = distanceArg;
+		distance2 = distanceArg2;
 	}
 
 	@Override
 	protected void initialize() {
 		Util.timeStamp("Autonomous Forward Init");
-		Time = System.currentTimeMillis();
+		Robot.Chassis.encoderMove(distance1, distance2);
 	}
 
 	@Override
 	protected void execute() {
-    	double lSpeed = 1;
-    	double rSpeed = 1;
-		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 
 	@Override
 	protected boolean isFinished(){
-		if((Time + timeRun) < System.currentTimeMillis()){
+		double f = distance1 - Robot.Chassis.leftEncoderGet();
+		if(Math.abs(f) < 50){
 		return true;
 		}
 		else return false;

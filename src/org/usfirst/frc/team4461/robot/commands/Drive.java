@@ -18,8 +18,8 @@ public class Drive extends Command {
 
 	@Override
 	protected void execute() {
-    	double lSpeed = OI.leftJoystick.getY();
-    	double rSpeed = OI.rightJoystick.getY();
+    	double lSpeed = OI.lJoyGetY();
+    	double rSpeed = OI.rJoyGetY();
 		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 

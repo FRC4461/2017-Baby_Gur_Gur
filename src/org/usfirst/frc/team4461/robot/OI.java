@@ -44,11 +44,19 @@ public class OI {
 		Util.timeStamp("Complete OI Init.");
 	}//End OI
 	
-	public double lJoyGetY(){
-		return leftJoystick.getY();
+	public static double lJoyGetY(){
+		double lSpeed = leftJoystick.getY();
+		if(lSpeed > -.05 && lSpeed < .05){
+		return 0;
+		}
+		return lSpeed;
 	}
 	
-	public double rJoyGetY(){
-		return rightJoystick.getY();
+	public static double rJoyGetY(){
+		double rSpeed = rightJoystick.getY();
+		if(rSpeed > -.05 && rSpeed < .05){
+		return 0;
+		}
+		return rSpeed;
 	}
 }//End Class

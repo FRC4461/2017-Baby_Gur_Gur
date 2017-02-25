@@ -24,8 +24,8 @@ public class AutonomousTurnLeft extends Command {
 
 	@Override
 	protected void execute() {
-    	double lSpeed = 1;
-    	double rSpeed = -1;
+    	double lSpeed = -1;
+    	double rSpeed = 1;
 		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 
