@@ -1,37 +1,36 @@
 package org.usfirst.frc.team4461.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4461.robot.Robot;
 import org.usfirst.frc.team4461.robot.Util;
 
-
-public class AutonomousTurnRight extends Command {
-	double Time = 0;
-	double timeRun = 0;
+public class AutonomousMove extends Command {
+	double distance = 0;
+	double distanceInTicks = 0;
 	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
-	public AutonomousTurnRight(double timeRunArg){
-		timeRun = timeRunArg;
+	public AutonomousMove(double distanceArg){
+		distance = distanceArg;
 	}
 
 	@Override
 	protected void initialize() {
-		Util.timeStamp("Autonomous Turn Left Init");
-		Time = System.currentTimeMillis();
+		Util.timeStamp("Autonomous Forward Init");
+		distanceInTicks = distance / .00306641;
+		Robot.Chassis.encoderMove(distanceInTicks);
 	}
 
 	@Override
 	protected void execute() {
-    	double lSpeed = 1;
-    	double rSpeed = -1;
-		Robot.Chassis.Run(lSpeed, rSpeed);
 	}
 
 	@Override
 	protected boolean isFinished(){
-		if((Time + timeRun) < System.currentTimeMillis()){
+		double ticksToTarget = distanceInTicks - Robot.Chassis.leftEncoderGet();
+		if(Math.abs(ticksToTarget) < 50){
 		return true;
 		}
 		else return false;
@@ -40,9 +39,9 @@ public class AutonomousTurnRight extends Command {
 	@Override
 	protected void end() {
 		Robot.Chassis.Stop();
-		Util.timeStamp("Autonomous Turn Left Stop");
+		Util.timeStamp("Autonomous Forward Stop");
 	}
-	
+
 	@Override
 	protected void interrupted() {
 		end();

@@ -55,15 +55,22 @@ public class Chassis extends Subsystem {
 		rightMotor1.set(-rSpeed);
 }
 
-	public void encoderMove(double distance1, double distance2) {
+	public void encoderMove(double leftDistanceInTicks, double rightDistanceInTicks) {
 		leftMotor1.setPosition(0);
 		rightMotor1.setPosition(0);
-
 		leftMotor1.changeControlMode(TalonControlMode.Position);
 		rightMotor1.changeControlMode(TalonControlMode.Position);
-		
-		leftMotor1.set(distance1);
-		rightMotor1.set(distance2);
+		leftMotor1.set(leftDistanceInTicks);
+		rightMotor1.set(rightDistanceInTicks);
+}
+	
+	public void encoderMove(double distanceInTicks) {
+		leftMotor1.setPosition(0);
+		rightMotor1.setPosition(0);
+		leftMotor1.changeControlMode(TalonControlMode.Position);
+		rightMotor1.changeControlMode(TalonControlMode.Position);
+		leftMotor1.set(distanceInTicks);
+		rightMotor1.set(distanceInTicks);
 }
 
 
