@@ -63,25 +63,24 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 //		CameraServer.getInstance().startAutomaticCapture(0);
 //		CameraServer.getInstance().startAutomaticCapture(1);
-		Util.timeStamp("Robot robotInit.");
+		Util.timeStamp("ROBOT robotInit");
 	}//End robotInit
 
 	@Override
 	public void disabledInit() {
-		Util.timeStamp("Robot disabled.");
+		Util.timeStamp("ROBOT disabledPeriodic");
 	}//End disabledInit
 
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		Util.timeStamp("ROBOT disabledPeriodic");
 	}//End disabledPeriodic
 
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = (Command) autoChooser.getSelected();
-       
-		//addSequential(new CameraTest(0));
-		//autoChooser.addDefault("Camera Test", new CameraTest(0));
+		Util.timeStamp("ROBOT autonomousInit");
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}//End autonomousInit
@@ -89,6 +88,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		Util.timeStamp("ROBOT autonomousPeriodic");
 	}//End autonomousPeriodic
 
 	@Override
@@ -96,16 +96,19 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}//End If
+		Util.timeStamp("ROBOT teleopInit");
 	}//End teleopInit
 
 	@Override
 	public void teleopPeriodic() {
 		SmartDashboard.putData("Auto mode", autoChooser);
 		Scheduler.getInstance().run();
+		Util.timeStamp("ROBOT teleopPeriodic");
 	}//End teleopPeriodic
 
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+		Util.timeStamp("ROBOT Test");
 	}//End testPeriodic
 }//End Class

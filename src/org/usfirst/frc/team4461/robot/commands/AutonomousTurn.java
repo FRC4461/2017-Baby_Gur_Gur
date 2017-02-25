@@ -8,6 +8,7 @@ import org.usfirst.frc.team4461.robot.Util;
 public class AutonomousTurn extends Command {
 	double degreesInInches = 0;
 	double distanceInTicks = 0;
+	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */

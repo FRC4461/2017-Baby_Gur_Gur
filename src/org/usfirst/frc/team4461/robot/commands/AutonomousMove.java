@@ -18,7 +18,7 @@ public class AutonomousMove extends Command {
 
 	@Override
 	protected void initialize() {
-		Util.timeStamp("Autonomous Forward Init");
+		Util.timeStamp("Autonomous Forward Init"+Robot.Chassis.rightEncoderGet());
 		distanceInTicks = distance / .00306641;
 		Robot.Chassis.encoderMove(distanceInTicks);
 	}
@@ -29,6 +29,7 @@ public class AutonomousMove extends Command {
 
 	@Override
 	protected boolean isFinished(){
+		Util.timeStamp("left Encoder Move"+Robot.Chassis.leftEncoderGet());
 		double ticksToTarget = distanceInTicks - Robot.Chassis.leftEncoderGet();
 		if(Math.abs(ticksToTarget) < 50){
 		return true;

@@ -24,6 +24,7 @@ public class AutonomousShoot extends Command {
 
 	@Override
 	protected void execute() {
+		Robot.HopperMotors.Shoot();
 	}
 
 	@Override

@@ -41,11 +41,13 @@ public class Chassis extends Subsystem {
 		rightMotor3.changeControlMode(TalonControlMode.Follower);
 		rightMotor2.set(RobotMap.CANTalon4);
 		rightMotor3.set(RobotMap.CANTalon4);
+		
+		Util.timeStamp("Chassis");
 	}//End Chassis
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new Drive());
-		Util.timeStamp("Chassis.java");
+		Util.timeStamp("Chassis");
 	}//End DefaultCommand
 	
 	public void Run(double lSpeed, double rSpeed) {
@@ -72,7 +74,6 @@ public class Chassis extends Subsystem {
 		leftMotor1.set(distanceInTicks);
 		rightMotor1.set(distanceInTicks);
 }
-
 
 	public double leftEncoderGet(){
 		return leftMotor1.get();

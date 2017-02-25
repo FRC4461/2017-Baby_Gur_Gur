@@ -28,8 +28,6 @@ public class OI {
 	
 	
 	public OI(){
-		Util.timeStamp("Start OI Init.");
-		
 		leftJoystick = new Joystick(RobotMap.leftJoystick);
 		rightJoystick = new Joystick(RobotMap.rightJoystick);
 		
@@ -41,7 +39,7 @@ public class OI {
 		rightButton1.toggleWhenPressed(new HopperShoot());
 		rightButton2.toggleWhenPressed(new HopperTake());
 		
-		Util.timeStamp("Complete OI Init.");
+		Util.timeStamp("OI INITIALIZED");
 	}//End OI
 	
 	public static double lJoyGetY(){
