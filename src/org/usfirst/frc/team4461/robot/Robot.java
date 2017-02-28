@@ -11,9 +11,10 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team4461.robot.commands.BlueGear;
-import org.usfirst.frc.team4461.robot.commands.BlueShoot;
+import org.usfirst.frc.team4461.robot.commands.BlueShoot1;
+import org.usfirst.frc.team4461.robot.commands.BlueShoot2;
 import org.usfirst.frc.team4461.robot.commands.RedGear;
-import org.usfirst.frc.team4461.robot.commands.RedShoot;
+import org.usfirst.frc.team4461.robot.commands.RedShoot1;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
 
@@ -48,13 +49,16 @@ public class Robot extends IterativeRobot {
 	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		autoChooser = new SendableChooser<Command>();
 		timeChooser = new SendableChooser<Integer>();
+		timeChooser.addDefault("0 Secconds", 0);
 		timeChooser.addDefault("1 Secconds", 1000);
+		timeChooser.addDefault("2 Secconds", 2000);
 		timeChooser.addDefault("3 Secconds", 3000);
 		timeChooser.addDefault("5 Secconds", 5000);
 		timeChooser.addDefault("7 Secconds", 7000);
 		timeChooser.addDefault("10 Secconds", 10000);
-		autoChooser.addDefault("Red Shoot", new RedShoot());
-		autoChooser.addDefault("Blue Shoot", new BlueShoot());
+		autoChooser.addDefault("Red Shoot", new RedShoot1());
+		autoChooser.addDefault("Blue Shoot", new BlueShoot1());
+		autoChooser.addDefault("Blue Shoot", new BlueShoot2());
 		autoChooser.addDefault("Red Gear", new RedGear());
 		autoChooser.addDefault("Blue Gear", new BlueGear());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
