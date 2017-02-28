@@ -15,6 +15,7 @@ import org.usfirst.frc.team4461.robot.commands.BlueShoot1;
 import org.usfirst.frc.team4461.robot.commands.BlueShoot2;
 import org.usfirst.frc.team4461.robot.commands.RedGear;
 import org.usfirst.frc.team4461.robot.commands.RedShoot1;
+import org.usfirst.frc.team4461.robot.commands.RedShoot2;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
 
@@ -56,9 +57,10 @@ public class Robot extends IterativeRobot {
 		timeChooser.addDefault("5 Secconds", 5000);
 		timeChooser.addDefault("7 Secconds", 7000);
 		timeChooser.addDefault("10 Secconds", 10000);
-		autoChooser.addDefault("Red Shoot", new RedShoot1());
-		autoChooser.addDefault("Blue Shoot", new BlueShoot1());
-		autoChooser.addDefault("Blue Shoot", new BlueShoot2());
+		autoChooser.addDefault("Red Shoot 1", new RedShoot1());
+		autoChooser.addDefault("Red Shoot 2", new RedShoot2());
+		autoChooser.addDefault("Blue Shoot 1", new BlueShoot1());
+		autoChooser.addDefault("Blue Shoot 2", new BlueShoot2());
 		autoChooser.addDefault("Red Gear", new RedGear());
 		autoChooser.addDefault("Blue Gear", new BlueGear());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);

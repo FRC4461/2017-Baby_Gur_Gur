@@ -13,6 +13,7 @@ public class AutonomousMove extends Command {
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
 	public AutonomousMove(double distanceArg){
+		requires(Robot.Chassis);
 		distance = distanceArg;
 	}
 

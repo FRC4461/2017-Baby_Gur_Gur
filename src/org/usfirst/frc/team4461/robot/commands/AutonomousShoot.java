@@ -13,6 +13,7 @@ public class AutonomousShoot extends Command {
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
 	public AutonomousShoot(double timeRunArg){
+		requires(Robot.HopperMotors);
 		timeRun = timeRunArg;
 	}
 

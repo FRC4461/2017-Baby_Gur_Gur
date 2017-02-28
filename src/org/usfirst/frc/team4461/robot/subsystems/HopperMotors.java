@@ -7,9 +7,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class HopperMotors extends Subsystem {
 	
 	//Initializing Talons
-	CANTalon Shooter = new CANTalon(RobotMap.CANTalon7);
-	CANTalon Shooter2 = new CANTalon(RobotMap.CANTalon8);
-	CANTalon Intake = new CANTalon(RobotMap.CANTalon9);
+	CANTalon Shooter;
+	CANTalon Shooter2;
+	CANTalon Intake;
+	
+	public HopperMotors(){
+		Shooter = new CANTalon(RobotMap.CANTalon7);
+		Shooter2 = new CANTalon(RobotMap.CANTalon8);
+		Intake = new CANTalon(RobotMap.CANTalon9);
+	}
 	
     public void initDefaultCommand() {
     	System.out.println("4461: Hopper.java");

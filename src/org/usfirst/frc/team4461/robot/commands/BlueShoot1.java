@@ -14,8 +14,8 @@ public class BlueShoot1 extends CommandGroup {
     	addSequential(new Vision()); //Vison recentering to face boiler
     	addSequential(new AutonomousMove(30)); //Run into Boiler
     	addSequential(new AutonomousShoot(30)); //Shoot
-    	addSequential(new AutonomousMove(-30)); //
+    	addSequential(new AutonomousMove(-30)); //Reverse
     	addSequential(new AutonomousTurn(-45)); //45 degrees
-    	addSequential(new AutonomousMove(145));
+    	addSequential(new AutonomousMove(145));	//Cross Line
     }
 }
