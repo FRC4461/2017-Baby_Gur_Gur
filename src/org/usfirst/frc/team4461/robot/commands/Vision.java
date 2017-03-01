@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4461.robot.commands;
 
 import org.usfirst.frc.team4461.robot.Robot;
+import org.usfirst.frc.team4461.robot.Util;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -24,10 +25,11 @@ public class Vision extends Command {
     protected void execute() {
 		double[] defaultValue = new double[0];
 		double[] centerX = table.getNumberArray("centerX", defaultValue);
-		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
+		Util.timeStamp("Center X"+centerX.length);
     	double lSpeed = 0;
     	double rSpeed = 0;
     	if(centerX.length == 2){
+    		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
     		//if we take the cameras dimensions and divide by half 360 /2 = 160
     		//155 is the left deadzone
     		if(trueCenterX < 150){
@@ -36,8 +38,8 @@ public class Vision extends Command {
     	    	Time = System.currentTimeMillis();
     		}//If
     		else if(trueCenterX > 170){
-    	    	lSpeed = -1;
-    	    	rSpeed = 1;
+    	    	lSpeed = 1;
+    	    	rSpeed = -1;
     	    	Time = System.currentTimeMillis();
     		}//Else If
     		Robot.Chassis.Run(lSpeed, rSpeed);
@@ -46,7 +48,7 @@ public class Vision extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((Time + 3000) > System.currentTimeMillis()){
+    	if((Time + 3000) < System.currentTimeMillis()){
     		return true;
     	}
         return false;
