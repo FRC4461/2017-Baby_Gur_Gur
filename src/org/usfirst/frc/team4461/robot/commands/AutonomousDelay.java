@@ -19,7 +19,7 @@ public class AutonomousDelay extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     protected void end() {

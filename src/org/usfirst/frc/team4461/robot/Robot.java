@@ -35,9 +35,9 @@ public class Robot extends IterativeRobot {
 	public static Object imgLock = new Object();
 	
 	//Initializing Subsystems
-	public static Chassis Chassis;
-	public static HopperMotors HopperMotors;
-	public static OI oi;
+	public static Chassis Chassis = new Chassis();
+	public static HopperMotors HopperMotors = new HopperMotors();
+	public static OI oi = new OI();
 	
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser;
@@ -51,22 +51,20 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser<Command>();
 		timeChooser = new SendableChooser<Integer>();
 		timeChooser.addDefault("0 Secconds", 0);
-		timeChooser.addDefault("1 Secconds", 1000);
-		timeChooser.addDefault("2 Secconds", 2000);
-		timeChooser.addDefault("3 Secconds", 3000);
-		timeChooser.addDefault("5 Secconds", 5000);
-		timeChooser.addDefault("7 Secconds", 7000);
-		timeChooser.addDefault("10 Secconds", 10000);
+		timeChooser.addObject("1 Secconds", 1);
+		timeChooser.addObject("2 Secconds", 2);
+		timeChooser.addObject("3 Secconds", 3);
+		timeChooser.addObject("5 Secconds", 5);
+		timeChooser.addObject("7 Secconds", 7);
+		timeChooser.addObject("10 Secconds", 10);
 		autoChooser.addDefault("Red Shoot 1", new RedShoot1());
-		autoChooser.addDefault("Red Shoot 2", new RedShoot2());
-		autoChooser.addDefault("Blue Shoot 1", new BlueShoot1());
-		autoChooser.addDefault("Blue Shoot 2", new BlueShoot2());
-		autoChooser.addDefault("Red Gear", new RedGear());
-		autoChooser.addDefault("Blue Gear", new BlueGear());
+		autoChooser.addObject("Red Shoot 2", new RedShoot2());
+		autoChooser.addObject("Blue Shoot 1", new BlueShoot1());
+		autoChooser.addObject("Blue Shoot 2", new BlueShoot2());
+		autoChooser.addObject("Red Gear", new RedGear());
+		autoChooser.addObject("Blue Gear", new BlueGear());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
-		HopperMotors = new HopperMotors();
-		Chassis = new Chassis();
-		oi = new OI();
+		SmartDashboard.putData("Autonomous mode time chooser", timeChooser);
 //		CameraServer.getInstance().startAutomaticCapture(0);
 //		CameraServer.getInstance().startAutomaticCapture(1);
 		Util.timeStamp("ROBOT robotInit");
@@ -80,7 +78,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		Util.timeStamp("ROBOT disabledPeriodic");
 	}//End disabledPeriodic
 
 	@Override
@@ -94,7 +91,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		Util.timeStamp("ROBOT autonomousPeriodic");
+		//Util.timeStamp("ROBOT autonomousPeriodic");
 	}//End autonomousPeriodic
 
 	@Override
@@ -107,7 +104,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putData("Auto mode", autoChooser);
 		Scheduler.getInstance().run();
 		Util.timeStamp("ROBOT teleopPeriodic");
 	}//End teleopPeriodic

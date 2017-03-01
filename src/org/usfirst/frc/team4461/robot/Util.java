@@ -11,7 +11,6 @@ public class Util {
 	public static void timeStamp(String textArg){
 		Date date = new Date();
 		System.out.println(date+" 4461:"+textArg);
-		Util.timeStamp("Util Inizialized");
 	}//End timeStamp
 	
 }//End Class
