@@ -10,6 +10,9 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
+import org.usfirst.frc.team4461.robot.commands.AutonomousBlueForward;
+import org.usfirst.frc.team4461.robot.commands.AutonomousNothing;
+import org.usfirst.frc.team4461.robot.commands.AutonomousRedForward;
 import org.usfirst.frc.team4461.robot.commands.BlueGear;
 import org.usfirst.frc.team4461.robot.commands.BlueShoot1;
 import org.usfirst.frc.team4461.robot.commands.BlueShoot2;
@@ -46,8 +49,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+//		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 		autoChooser = new SendableChooser<Command>();
 		timeChooser = new SendableChooser<Integer>();
 		timeChooser.addDefault("0 Secconds", 0);
@@ -57,12 +60,15 @@ public class Robot extends IterativeRobot {
 		timeChooser.addObject("5 Secconds", 5);
 		timeChooser.addObject("7 Secconds", 7);
 		timeChooser.addObject("10 Secconds", 10);
-		autoChooser.addDefault("Red Shoot 1", new RedShoot1());
+		autoChooser.addObject("Red Shoot 1", new RedShoot1());
 		autoChooser.addObject("Red Shoot 2", new RedShoot2());
 		autoChooser.addObject("Blue Shoot 1", new BlueShoot1());
 		autoChooser.addObject("Blue Shoot 2", new BlueShoot2());
+		autoChooser.addDefault("Nothing", new AutonomousNothing());
 		autoChooser.addObject("Red Gear", new RedGear());
 		autoChooser.addObject("Blue Gear", new BlueGear());
+		autoChooser.addObject("Autonomous Blue Forward", new AutonomousBlueForward());
+		autoChooser.addObject("Autonomous Red Forward", new AutonomousRedForward());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 		SmartDashboard.putData("Autonomous mode time chooser", timeChooser);
 //		CameraServer.getInstance().startAutomaticCapture(0);
@@ -78,6 +84,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		Util.timeStamp("Right Encoder Value"+Robot.Chassis.rightEncoderGet());
+		Util.timeStamp("Left Encoder Value"+Robot.Chassis.leftEncoderGet());
 	}//End disabledPeriodic
 
 	@Override
@@ -105,7 +113,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		Util.timeStamp("ROBOT teleopPeriodic");
+		Util.timeStamp("Left Encoder Value"+Robot.Chassis.leftEncoderGet());
+		Util.timeStamp("Right Encoder Value"+Robot.Chassis.rightEncoderGet());
 	}//End teleopPeriodic
 
 	@Override
