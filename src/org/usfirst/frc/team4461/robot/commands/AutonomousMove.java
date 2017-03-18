@@ -28,7 +28,7 @@ public class AutonomousMove extends Command {
 		double wheelRotations = distance / wheelCircumference;
 		double ticksToTravel = wheelRotations * countsPerRevolution;
 		leftDistanceInTicks = ticksToTravel * 1;
-		rightDistanceInTicks = ticksToTravel * -1;
+		rightDistanceInTicks = ticksToTravel * 1;
 		Robot.Chassis.encoderMove(leftDistanceInTicks, rightDistanceInTicks);
 	}
 

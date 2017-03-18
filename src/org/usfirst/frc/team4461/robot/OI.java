@@ -43,7 +43,7 @@ public class OI {
 	}//End OI
 	
 	public static double lJoyGetY(){
-		double lSpeed = leftJoystick.getY();
+		double lSpeed = -leftJoystick.getY();
 		if(lSpeed > -.05 && lSpeed < .05){
 		return 0;
 		}
@@ -51,7 +51,7 @@ public class OI {
 	}
 	
 	public static double rJoyGetY(){
-		double rSpeed = rightJoystick.getY();
+		double rSpeed = -rightJoystick.getY();
 		if(rSpeed > -.05 && rSpeed < .05){
 		return 0;
 		}

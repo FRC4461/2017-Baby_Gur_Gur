@@ -42,10 +42,6 @@ public class Chassis extends Subsystem {
 		rightMotor3.changeControlMode(TalonControlMode.Follower);
 		rightMotor3.set(rightMotor2.getDeviceID());
 		
-
-		leftMotor2.reset();
-		rightMotor2.reset();
-		
 		
 		Util.timeStamp("Chassis");
 	}//End Chassis
@@ -61,12 +57,20 @@ public class Chassis extends Subsystem {
 		rightMotor2.changeControlMode(TalonControlMode.PercentVbus);
 		leftMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		rightMotor3.changeControlMode(TalonControlMode.PercentVbus);
-		leftMotor1.set(-lSpeed);
-		rightMotor1.set(rSpeed);
-		leftMotor2.set(-lSpeed);
-		rightMotor2.set(rSpeed);
-		leftMotor3.set(-lSpeed);
-		rightMotor3.set(rSpeed);
+		
+		leftMotor1.setVoltageRampRate(.3);
+		leftMotor2.setVoltageRampRate(.3);
+		leftMotor3.setVoltageRampRate(.3);
+		rightMotor1.setVoltageRampRate(.3);
+		rightMotor2.setVoltageRampRate(.3);
+		rightMotor3.setVoltageRampRate(.3);
+		
+		leftMotor1.set(lSpeed);
+		rightMotor1.set(-rSpeed);
+		leftMotor2.set(lSpeed);
+		rightMotor2.set(-rSpeed);
+		leftMotor3.set(lSpeed);
+		rightMotor3.set(-rSpeed);
 }
 
 	public void encoderMove(double leftDistanceInTicks, double rightDistanceInTicks) {

@@ -35,15 +35,15 @@ public class Vision extends Command {
     		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
     		//if we take the cameras dimensions and divide by half 160 /2 = 80
     		//70-90 is the left deadzone
-    		if(trueCenterX < 70 && trueCenterX > 90){
+    		if(trueCenterX < 60 && trueCenterX > 100){
     			complete = true;
     		}
-    		else if(trueCenterX < 70){
+    		else if(trueCenterX < 60){
     	    	lSpeed = .3;
     	    	rSpeed = -.3;
     	    	Time = System.currentTimeMillis();
     		}//If
-    		else if(trueCenterX > 90){
+    		else if(trueCenterX > 100){
     	    	lSpeed = -.3;
     	    	rSpeed = .3;
     	    	Time = System.currentTimeMillis();

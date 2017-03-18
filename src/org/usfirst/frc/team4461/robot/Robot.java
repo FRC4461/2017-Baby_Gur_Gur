@@ -5,6 +5,7 @@ import org.usfirst.frc.team4461.robot.commands.AutonomousForward;
 import org.usfirst.frc.team4461.robot.commands.BlueGear;
 import org.usfirst.frc.team4461.robot.commands.BlueShoot1;
 import org.usfirst.frc.team4461.robot.commands.BlueShoot2;
+import org.usfirst.frc.team4461.robot.commands.MovingTapeAutonomous;
 import org.usfirst.frc.team4461.robot.commands.RedGear;
 import org.usfirst.frc.team4461.robot.commands.RedShoot1;
 import org.usfirst.frc.team4461.robot.commands.RedShoot2;
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Blue Shoot 1", new BlueShoot1());
 		autoChooser.addObject("Blue Shoot 2", new BlueShoot2());
 		autoChooser.addDefault("Nothing", new AutonomousNothing());
+		autoChooser.addObject("MovingTape", new MovingTapeAutonomous());
 		autoChooser.addObject("Red Gear", new RedGear());
 		autoChooser.addObject("Blue Gear", new BlueGear());
 		autoChooser.addObject("Autonomous Forward", new AutonomousForward());
