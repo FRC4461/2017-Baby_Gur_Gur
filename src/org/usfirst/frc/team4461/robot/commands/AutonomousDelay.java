@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4461.robot.commands;
 
 import org.usfirst.frc.team4461.robot.Robot;
+import org.usfirst.frc.team4461.robot.Util;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,6 +12,7 @@ public class AutonomousDelay extends Command {
 
     protected void initialize() {
     	double delayTime;
+    	Util.timeStamp("DELAY");
     	delayTime = Robot.timeChooser.getSelected(); 
     	setTimeout(delayTime);
     }
@@ -23,6 +25,7 @@ public class AutonomousDelay extends Command {
     }
 
     protected void end() {
+    	Util.timeStamp("DELAY FINISHED");
     }
 
     // Called when another command which requires one or more of the same

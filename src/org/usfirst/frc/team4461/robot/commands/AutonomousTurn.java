@@ -6,20 +6,28 @@ import org.usfirst.frc.team4461.robot.Util;
 
 
 public class AutonomousTurn extends Command {
-	double degreesInInches = 0;
-	double distanceInTicks = 0;
+	double wheelRadius = 2;
+	double robotRadius = 13.51;
+	double ticksPerRevolution = 4096;
+	double encoderWheelTicks = 0;
+	double turnAmount = 0;
 	double leftDistanceInTicks = 0;
 	double rightDistanceInTicks = 0;
+	double leftTicksToTarget = 0;
+	double rightTicksToTarget = 0;
+	
+	boolean leftEncoderDone;
+	boolean rightEncoderDone;
 	
 	/**
 	 * @param timeRunArg how long it will run in milliseconds
 	 */
 	public AutonomousTurn(double inchesArg){
 		requires(Robot.Chassis);
-		degreesInInches = inchesArg * .09744;
-		distanceInTicks = degreesInInches / .00306641;
-		leftDistanceInTicks = 1 * distanceInTicks;
-		rightDistanceInTicks = -1 *distanceInTicks;		
+		encoderWheelTicks = ((robotRadius / wheelRadius) * (ticksPerRevolution / 360));
+		turnAmount = encoderWheelTicks * inchesArg;
+		leftDistanceInTicks = turnAmount * 1;
+		rightDistanceInTicks = turnAmount * -1;
 	}
 
 	@Override
@@ -34,10 +42,10 @@ public class AutonomousTurn extends Command {
 
 	@Override
 	protected boolean isFinished(){
-		double leftTicksToTarget = distanceInTicks - Robot.Chassis.leftEncoderGet();
-		double rightTicksToTarget = distanceInTicks - Robot.Chassis.rightEncoderGet();
-		boolean leftEncoderDone = false;
-		boolean rightEncoderDone = false;
+		leftTicksToTarget = leftDistanceInTicks - Robot.Chassis.leftEncoderGet();
+		rightTicksToTarget = rightDistanceInTicks - Robot.Chassis.rightEncoderGet();
+		leftEncoderDone = false;
+		rightEncoderDone = false;
 		if(Math.abs(leftTicksToTarget) < 50){
 			leftEncoderDone = true;
 		}

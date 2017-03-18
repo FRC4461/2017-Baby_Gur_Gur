@@ -6,7 +6,6 @@ import org.usfirst.frc.team4461.robot.commands.Drive;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
-import com.ctre.CANTalon.FeedbackDeviceStatus;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,62 +31,61 @@ public class Chassis extends Subsystem {
 		leftMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		leftMotor2.setPID(.2, 0, 0);
 		leftMotor1.changeControlMode(TalonControlMode.Follower);
+		leftMotor1.set(leftMotor2.getDeviceID());
 		leftMotor3.changeControlMode(TalonControlMode.Follower);
-		leftMotor1.set(RobotMap.CANTalon2);
-		leftMotor3.set(RobotMap.CANTalon2);
+		leftMotor3.set(leftMotor2.getDeviceID());
 		
 		rightMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 		rightMotor2.setPID(.2, 0, 0);
 		rightMotor1.changeControlMode(TalonControlMode.Follower);
+		rightMotor1.set(rightMotor2.getDeviceID());
 		rightMotor3.changeControlMode(TalonControlMode.Follower);
-		rightMotor1.set(RobotMap.CANTalon4);
-		rightMotor3.set(RobotMap.CANTalon4);
+		rightMotor3.set(rightMotor2.getDeviceID());
+		
+
+		leftMotor2.reset();
+		rightMotor2.reset();
+		
 		
 		Util.timeStamp("Chassis");
 	}//End Chassis
 	
 	public void initDefaultCommand() {
 		setDefaultCommand(new Drive());
-		Util.timeStamp("Chassis");
 	}//End DefaultCommand
 	
 	public void Run(double lSpeed, double rSpeed) {
+		leftMotor1.changeControlMode(TalonControlMode.PercentVbus);
+		rightMotor1.changeControlMode(TalonControlMode.PercentVbus);
 		leftMotor2.changeControlMode(TalonControlMode.PercentVbus);
 		rightMotor2.changeControlMode(TalonControlMode.PercentVbus);
+		leftMotor3.changeControlMode(TalonControlMode.PercentVbus);
+		rightMotor3.changeControlMode(TalonControlMode.PercentVbus);
+		leftMotor1.set(-lSpeed);
+		rightMotor1.set(rSpeed);
 		leftMotor2.set(-lSpeed);
 		rightMotor2.set(rSpeed);
+		leftMotor3.set(-lSpeed);
+		rightMotor3.set(rSpeed);
 }
 
 	public void encoderMove(double leftDistanceInTicks, double rightDistanceInTicks) {
-		leftMotor2.setPosition(0);
-		rightMotor2.setPosition(0);
+
 		leftMotor2.changeControlMode(TalonControlMode.Position);
 		rightMotor2.changeControlMode(TalonControlMode.Position);
+		leftMotor2.setPosition(0);
+		rightMotor2.setPosition(0);
 		leftMotor2.set(leftDistanceInTicks);
 		rightMotor2.set(rightDistanceInTicks);
 }
-	
-	public void encoderMove(double distanceInTicks) {
-		leftMotor1.setPosition(0);
-		rightMotor1.setPosition(0);
-		leftMotor1.changeControlMode(TalonControlMode.Position);
-		rightMotor1.changeControlMode(TalonControlMode.Position);
-		leftMotor1.set(distanceInTicks);
-		rightMotor1.set(distanceInTicks);
-}
 
+	
 	public double leftEncoderGet(){
 		return leftMotor2.getEncPosition();
 	}
 	
 	public double rightEncoderGet(){
 		return rightMotor2.getEncPosition();
-	}
-	
-	public boolean checkStatus(){
-		FeedbackDeviceStatus sensorStatus = leftMotor2.isSensorPresent(FeedbackDevice.CtreMagEncoder_Relative);
-		boolean sensorPluggedIn = (FeedbackDeviceStatus.FeedbackStatusPresent == sensorStatus);
-		return sensorPluggedIn;
 	}
 
 	public void Stop(){

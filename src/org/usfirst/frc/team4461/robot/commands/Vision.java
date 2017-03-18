@@ -18,10 +18,13 @@ public class Vision extends Command {
     }
 
     protected void initialize() {
+    	Util.timeStamp("VISION");
 		table = NetworkTable.getTable("/GRIP/Contors");
 		Time = System.currentTimeMillis();
     }
 
+	public static boolean complete = false;
+	
     protected void execute() {
 		double[] defaultValue = new double[0];
 		double[] centerX = table.getNumberArray("centerX", defaultValue);
@@ -30,18 +33,21 @@ public class Vision extends Command {
     	double rSpeed = 0;
     	if(centerX.length == 2){
     		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
-    		//if we take the cameras dimensions and divide by half 360 /2 = 160
-    		//155 is the left deadzone
-    		if(trueCenterX < 150){
-    	    	lSpeed = -1;
-    	    	rSpeed = 1;
+    		//if we take the cameras dimensions and divide by half 160 /2 = 80
+    		//70-90 is the left deadzone
+    		if(trueCenterX < 70 && trueCenterX > 90){
+    			complete = true;
+    		}
+    		else if(trueCenterX < 70){
+    	    	lSpeed = .3;
+    	    	rSpeed = -.3;
     	    	Time = System.currentTimeMillis();
     		}//If
-    		else if(trueCenterX > 170){
-    	    	lSpeed = 1;
-    	    	rSpeed = -1;
+    		else if(trueCenterX > 90){
+    	    	lSpeed = -.3;
+    	    	rSpeed = .3;
     	    	Time = System.currentTimeMillis();
-    		}//Else If
+    		}
     		Robot.Chassis.Run(lSpeed, rSpeed);
     	}//If
     }
@@ -49,6 +55,9 @@ public class Vision extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if((Time + 3000) < System.currentTimeMillis()){
+    		return true;
+    	}
+    	if(complete){
     		return true;
     	}
         return false;

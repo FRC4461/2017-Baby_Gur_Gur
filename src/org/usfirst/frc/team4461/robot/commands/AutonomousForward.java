@@ -2,9 +2,9 @@ package org.usfirst.frc.team4461.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AutonomousBlueForward extends CommandGroup {
+public class AutonomousForward extends CommandGroup {
 
-    public AutonomousBlueForward() {
+    public AutonomousForward() {
 		addSequential(new AutonomousDelay());
     	addSequential(new AutonomousMove(215));
     }
