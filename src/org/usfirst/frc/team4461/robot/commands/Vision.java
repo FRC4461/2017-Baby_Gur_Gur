@@ -6,9 +6,6 @@ import org.usfirst.frc.team4461.robot.Util;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
-/**
- *
- */
 public class Vision extends Command {
 	private static NetworkTable table;
 	double Time = 0;
@@ -31,21 +28,22 @@ public class Vision extends Command {
 		Util.timeStamp("Center X"+centerX.length);
     	double lSpeed = 0;
     	double rSpeed = 0;
+    	
     	if(centerX.length == 2){
     		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
     		//if we take the cameras dimensions and divide by half 160 /2 = 80
-    		//70-90 is the left deadzone
+    		//60-100 is the left deadzone
     		if(trueCenterX < 60 && trueCenterX > 100){
     			complete = true;
     		}
     		else if(trueCenterX < 60){
-    	    	lSpeed = .3;
-    	    	rSpeed = -.3;
+    	    	lSpeed = .2;
+    	    	rSpeed = -.2;
     	    	Time = System.currentTimeMillis();
     		}//If
     		else if(trueCenterX > 100){
-    	    	lSpeed = -.3;
-    	    	rSpeed = .3;
+    	    	lSpeed = -.2;
+    	    	rSpeed = .2;
     	    	Time = System.currentTimeMillis();
     		}
     		Robot.Chassis.Run(lSpeed, rSpeed);

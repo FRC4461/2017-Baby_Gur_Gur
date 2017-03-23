@@ -7,9 +7,8 @@ import org.usfirst.frc.team4461.robot.Util;
 
 public class AutonomousMove extends Command {
 	final double countsPerRevolution = 1024;
-	final double wheelCircumference = 12.56;
-	double leftDistanceInTicks = 0;
-	double rightDistanceInTicks = 0;
+	final double wheelCircumference = 12.56;		
+	double ticksToTravel = 0;
 	double ticksToTarget = 0;
 	double distance = 0;
 		
@@ -24,12 +23,11 @@ public class AutonomousMove extends Command {
 
 	@Override
 	protected void initialize() {
+		Robot.Chassis.encodersReset();
 		Util.timeStamp("auto move");
 		double wheelRotations = distance / wheelCircumference;
-		double ticksToTravel = wheelRotations * countsPerRevolution;
-		leftDistanceInTicks = ticksToTravel * 1;
-		rightDistanceInTicks = ticksToTravel * 1;
-		Robot.Chassis.encoderMove(leftDistanceInTicks, rightDistanceInTicks);
+		ticksToTravel = wheelRotations * countsPerRevolution;
+		Robot.Chassis.encoderMove(ticksToTravel, -ticksToTravel);
 	}
 
 	@Override
@@ -39,8 +37,8 @@ public class AutonomousMove extends Command {
 
 	@Override
 	protected boolean isFinished(){
-		double leftTicksToTarget = leftDistanceInTicks - Robot.Chassis.leftEncoderGet();
-		double rightTicksToTarget = rightDistanceInTicks - Robot.Chassis.rightEncoderGet();
+		double leftTicksToTarget = ticksToTravel - Robot.Chassis.leftEncoderGet();
+		double rightTicksToTarget = ticksToTravel - Robot.Chassis.rightEncoderGet();
 		boolean leftEncoderDone = false;
 		boolean rightEncoderDone = false;
 		if(Math.abs(leftTicksToTarget) < 50){
