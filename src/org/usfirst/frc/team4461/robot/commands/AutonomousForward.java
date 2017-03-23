@@ -6,6 +6,6 @@ public class AutonomousForward extends CommandGroup {
 
     public AutonomousForward() {
 		addSequential(new AutonomousDelay());
-    	addSequential(new AutonomousMove(3));
+    	addSequential(new AutonomousMove(215));
     }
 }

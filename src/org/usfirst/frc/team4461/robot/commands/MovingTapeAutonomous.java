@@ -6,10 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class MovingTapeAutonomous extends Command {
+
 	private static NetworkTable table;
-	double averagedHeight1 = 0;
 	double averagedHeight = 0;
-	double trueCenterX1 = 0;
 	double trueCenterX = 0;
 	final double realHeight = 5;
 	final double focalPoint = 180; 
@@ -28,71 +27,52 @@ public class MovingTapeAutonomous extends Command {
 		double[] defaultValue = new double[0];
 		double[] trueHeight = table.getNumberArray("height", defaultValue);
 		double[] centerX = table.getNumberArray("centerX", defaultValue);
+
+    	if(centerX.length == 2 && trueHeight.length == 2){
     	trueCenterX = (centerX[0] + centerX[1]) / 2;
 		averagedHeight = (trueHeight[0] + trueHeight[1]) / 2;
 		double Distance = (focalPoint*realHeight) / averagedHeight;
 		
-		
-    	if(centerX.length == 2 && trueHeight.length == 2){ //If you get 2 array values
-		if(trueCenterX > 60 && trueCenterX < 100){ //If its centered
-			if(Distance > 18){ //If further then this distance
+		if(trueCenterX > 70 && trueCenterX < 90){
+			if(Distance > 12){
 				double speedForward = .01 * Distance + .1;
-				double rightWheelFix = speedForward / .75;
-				double leftWheelFix = speedForward / 1;
-				
-				Robot.Chassis.Run(leftWheelFix, rightWheelFix);
+				Robot.Chassis.Run(speedForward, speedForward);
 			} 
-			else if(Distance < 18){//If within this distance
-				Robot.Chassis.Run(0,0);
+			else{
 				codeComplete = true;
 			}
 		}
-		else if(trueCenterX < 50){// if its to the left
-			double leftOffset = 60 - trueCenterX;
+		else if(trueCenterX < 70){
+			double leftOffset = 70 - trueCenterX;
 			double speedTurn = .005 * leftOffset + .2;
-			double rightWheelFix = speedTurn / .75;
-			double leftWheelFix = speedTurn / 1;
-			Robot.Chassis.Run(leftWheelFix, -rightWheelFix);
+			Robot.Chassis.Run(speedTurn, -speedTurn);
 		}
-		else if(trueCenterX > 110){
-			double leftOffset = trueCenterX - 100;
+		else if(trueCenterX > 90){
+			double leftOffset = trueCenterX - 90;
 			double speedTurn = .005 * leftOffset + .2;
-			double rightWheelFix = speedTurn / .75;
-			double leftWheelFix = speedTurn / 1;
-			Robot.Chassis.Run(-leftWheelFix, rightWheelFix);
+			Robot.Chassis.Run(-speedTurn, speedTurn);
 		}
     }
 
     	if(centerX.length == 1 && trueHeight.length == 1){
-        	trueCenterX1 = centerX[0];
-        	averagedHeight1 = trueHeight[0];
-    		double Distance1 = (focalPoint*realHeight) / averagedHeight;
-    		if(trueCenterX1 > 60 && trueCenterX1 < 100){
-    			if(Distance1 > 18){
-    				double speedForward = .01 * Distance1 + .1;
-    				Robot.Chassis.Run(speedForward, speedForward);
-    			} 
-    			else if(Distance < 18){//If within this distance
-    				Robot.Chassis.Run(0,0);
-    				codeComplete = true;
-    			}
-    		}
-    		if(trueCenterX < 50){
+        	trueCenterX = centerX[0];
+        	averagedHeight = trueHeight[0];
+        	
+    		if(trueCenterX < 60){
     			double leftOffset = 60 - trueCenterX;
     			double speedTurn = .005 * leftOffset + .2;
-    			double rightWheelFix = speedTurn / .75;
-    			double leftWheelFix = speedTurn / 1;
-    			Robot.Chassis.Run(leftWheelFix, -rightWheelFix);
+    			Robot.Chassis.Run(speedTurn, -speedTurn);
     		}
     		
-    		else if(trueCenterX > 110){
+    		else if(trueCenterX > 100){
     			double leftOffset = trueCenterX - 100;
     			double speedTurn = .005 * leftOffset + .2;
-    			double rightWheelFix = speedTurn / .75;
-    			double leftWheelFix = speedTurn / 1;
-    			Robot.Chassis.Run(-leftWheelFix, rightWheelFix);
+    			Robot.Chassis.Run(-speedTurn, speedTurn);
     		}
+    		
     	}
+    	
+    	
    }
 
     protected boolean isFinished() {

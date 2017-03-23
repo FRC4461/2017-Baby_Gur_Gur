@@ -27,7 +27,22 @@ public class Chassis extends Subsystem {
 		rightMotor1 = new CANTalon(RobotMap.CANTalon4);
 		rightMotor2 = new CANTalon(RobotMap.CANTalon5);
 		rightMotor3 = new CANTalon(RobotMap.CANTalon6);
-
+		
+		leftMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		leftMotor2.setPID(.2, 0, 0);
+		leftMotor1.changeControlMode(TalonControlMode.Follower);
+		leftMotor1.set(leftMotor2.getDeviceID());
+		leftMotor3.changeControlMode(TalonControlMode.Follower);
+		leftMotor3.set(leftMotor2.getDeviceID());
+		
+		rightMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		rightMotor2.setPID(.2, 0, 0);
+		rightMotor1.changeControlMode(TalonControlMode.Follower);
+		rightMotor1.set(rightMotor2.getDeviceID());
+		rightMotor3.changeControlMode(TalonControlMode.Follower);
+		rightMotor3.set(rightMotor2.getDeviceID());
+		
+		
 		Util.timeStamp("Chassis");
 	}//End Chassis
 	
@@ -43,6 +58,13 @@ public class Chassis extends Subsystem {
 		leftMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		rightMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		
+		leftMotor1.setVoltageRampRate(.3);
+		leftMotor2.setVoltageRampRate(.3);
+		leftMotor3.setVoltageRampRate(.3);
+		rightMotor1.setVoltageRampRate(.3);
+		rightMotor2.setVoltageRampRate(.3);
+		rightMotor3.setVoltageRampRate(.3);
+		
 		leftMotor1.set(lSpeed);
 		rightMotor1.set(-rSpeed);
 		leftMotor2.set(lSpeed);
@@ -53,24 +75,8 @@ public class Chassis extends Subsystem {
 
 	public void encoderMove(double leftDistanceInTicks, double rightDistanceInTicks) {
 
-		leftMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-//		leftMotor2.setPID(.2, .002, .0002);
-		rightMotor2.changeControlMode(TalonControlMode.Position);
-		
-		leftMotor1.changeControlMode(TalonControlMode.Follower);
-		leftMotor1.set(leftMotor2.getDeviceID()); 
-		leftMotor3.changeControlMode(TalonControlMode.Follower);
-		leftMotor3.set(leftMotor2.getDeviceID());
-		
-		rightMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-//		rightMotor2.setPID(.2, .002, .0002);
 		leftMotor2.changeControlMode(TalonControlMode.Position);
-		
-		rightMotor1.changeControlMode(TalonControlMode.Follower);
-		rightMotor1.set(rightMotor2.getDeviceID());
-		rightMotor3.changeControlMode(TalonControlMode.Follower);
-		rightMotor3.set(rightMotor2.getDeviceID());
-		
+		rightMotor2.changeControlMode(TalonControlMode.Position);
 		leftMotor2.setPosition(0);
 		rightMotor2.setPosition(0);
 		leftMotor2.set(leftDistanceInTicks);
@@ -86,16 +92,6 @@ public class Chassis extends Subsystem {
 		return rightMotor2.getEncPosition();
 	}
 
-	public void encodersReset(){
-		leftMotor2.setEncPosition(0);
-		rightMotor2.setEncPosition(0);
-	}
-	
-	public void getVoltage(){
-		leftMotor2.getOutputCurrent();
-		rightMotor2.getOutputCurrent();
-	}
-	
 	public void Stop(){
 		leftMotor1.set(0);
 		leftMotor2.set(0);
