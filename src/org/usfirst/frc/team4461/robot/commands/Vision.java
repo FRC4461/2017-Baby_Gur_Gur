@@ -34,8 +34,8 @@ public class Vision extends Command {
     	if(centerX.length == 2){
     		double trueCenterX = (centerX[0] + centerX[1]) / 2.0;
     		//if we take the cameras dimensions and divide by half 160 /2 = 80
-    		//70-90 is the left deadzone
-    		if(trueCenterX < 60 && trueCenterX > 100){
+    		//70-90 is the deadzone
+    		if(trueCenterX > 60 && trueCenterX < 100){
     			complete = true;
     		}
     		else if(trueCenterX < 60){

@@ -45,12 +45,12 @@ public class MovingTapeAutonomous extends Command {
 		else if(trueCenterX < 70){
 			double leftOffset = 70 - trueCenterX;
 			double speedTurn = .005 * leftOffset + .2;
-			Robot.Chassis.Run(speedTurn, -speedTurn);
+			Robot.Chassis.Run(-speedTurn, speedTurn);
 		}
 		else if(trueCenterX > 90){
 			double leftOffset = trueCenterX - 90;
 			double speedTurn = .005 * leftOffset + .2;
-			Robot.Chassis.Run(-speedTurn, speedTurn);
+			Robot.Chassis.Run(speedTurn, -speedTurn);
 		}
     }
 
@@ -61,13 +61,13 @@ public class MovingTapeAutonomous extends Command {
     		if(trueCenterX < 60){
     			double leftOffset = 60 - trueCenterX;
     			double speedTurn = .005 * leftOffset + .2;
-    			Robot.Chassis.Run(speedTurn, -speedTurn);
+    			Robot.Chassis.Run(-speedTurn, speedTurn);
     		}
     		
     		else if(trueCenterX > 100){
     			double leftOffset = trueCenterX - 100;
     			double speedTurn = .005 * leftOffset + .2;
-    			Robot.Chassis.Run(-speedTurn, speedTurn);
+    			Robot.Chassis.Run(speedTurn, -speedTurn);
     		}
     		
     	}

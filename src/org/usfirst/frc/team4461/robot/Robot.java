@@ -77,7 +77,7 @@ public class Robot extends IterativeRobot {
 	}//End autonomousInit
 	
 	@Override
-	public void autonomousPeriodic() {
+	public void autonomousPeriodic() { 
 		Scheduler.getInstance().run();
 	}//End autonomousPeriodic
 

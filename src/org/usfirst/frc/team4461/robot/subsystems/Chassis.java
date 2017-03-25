@@ -79,17 +79,17 @@ public class Chassis extends Subsystem {
 		rightMotor2.changeControlMode(TalonControlMode.Position);
 		leftMotor2.setPosition(0);
 		rightMotor2.setPosition(0);
-		leftMotor2.set(leftDistanceInTicks);
+		leftMotor2.set(-leftDistanceInTicks);
 		rightMotor2.set(rightDistanceInTicks);
 }
 
 	
 	public double leftEncoderGet(){
-		return leftMotor2.getEncPosition();
+		return leftMotor2.getPosition();
 	}
 	
 	public double rightEncoderGet(){
-		return rightMotor2.getEncPosition();
+		return rightMotor2.getPosition();
 	}
 
 	public void Stop(){
