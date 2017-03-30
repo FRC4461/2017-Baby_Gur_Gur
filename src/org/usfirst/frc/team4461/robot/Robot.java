@@ -35,13 +35,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		autoChooser = new SendableChooser<Command>();
 		timeChooser = new SendableChooser<Integer>();
-		timeChooser.addDefault("0 Secconds", 0);
-		timeChooser.addObject("1 Seccond", 1);
-		timeChooser.addObject("2 Secconds", 2);
-		timeChooser.addObject("3 Secconds", 3);
-		timeChooser.addObject("5 Secconds", 5);
-		timeChooser.addObject("7 Secconds", 7);
-		timeChooser.addObject("10 Secconds", 10);
+		timeChooser.addDefault("0 Seconds", 0);
+		timeChooser.addObject("1 Second", 1);
+		timeChooser.addObject("2 Seconds", 2);
+		timeChooser.addObject("3 Seconds", 3);
+		timeChooser.addObject("5 Seconds", 5);
+		timeChooser.addObject("7 Seconds", 7);
+		timeChooser.addObject("10 Seconds", 10);
 		autoChooser.addObject("Red Shoot 1", new RedShoot1());
 		autoChooser.addObject("Red Shoot 2", new RedShoot2());
 		autoChooser.addObject("Blue Shoot 1", new BlueShoot1());

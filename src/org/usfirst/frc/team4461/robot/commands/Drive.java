@@ -13,7 +13,7 @@ public class Drive extends Command {
 
 	@Override
 	protected void initialize() {
-		Util.timeStamp("Drive Init");
+		Util.timeStamp("Drive Initz");
 	}
 
 	@Override

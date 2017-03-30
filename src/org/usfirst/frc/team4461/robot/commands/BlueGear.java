@@ -7,6 +7,6 @@ public class BlueGear extends CommandGroup {
     public BlueGear() {
 		addSequential(new AutonomousDelay());
     	addSequential(new Vision());
-    	addSequential(new AutonomousMove(10));
+    	addSequential(new movePlz(2));
     }
 }

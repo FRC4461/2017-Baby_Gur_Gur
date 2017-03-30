@@ -58,12 +58,12 @@ public class Chassis extends Subsystem {
 		leftMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		rightMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		
-		leftMotor1.setVoltageRampRate(.3);
-		leftMotor2.setVoltageRampRate(.3);
-		leftMotor3.setVoltageRampRate(.3);
-		rightMotor1.setVoltageRampRate(.3);
-		rightMotor2.setVoltageRampRate(.3);
-		rightMotor3.setVoltageRampRate(.3);
+//		leftMotor1.setVoltageRampRate(.3);
+//		leftMotor2.setVoltageRampRate(.3);
+//		leftMotor3.setVoltageRampRate(.3);
+//		rightMotor1.setVoltageRampRate(.3);
+//		rightMotor2.setVoltageRampRate(.3);
+//		rightMotor3.setVoltageRampRate(.3);
 		
 		leftMotor1.set(lSpeed);
 		rightMotor1.set(-rSpeed);
