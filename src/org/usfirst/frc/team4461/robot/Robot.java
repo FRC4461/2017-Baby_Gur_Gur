@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
+		System.out.print(Robot.Chassis.limitSwitchFeedback());
 		Util.timeStamp("ROBOT Test");
 	}//End testPeriodic
 	

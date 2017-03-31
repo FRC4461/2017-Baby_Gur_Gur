@@ -8,6 +8,7 @@ import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Chassis extends Subsystem {
@@ -20,6 +21,8 @@ public class Chassis extends Subsystem {
 					 rightMotor2,
 					 rightMotor3;
 	
+	private DigitalInput limitSwitch;
+	
 	public Chassis(){
 		leftMotor1 = new CANTalon(RobotMap.CANTalon1);
 		leftMotor2 = new CANTalon(RobotMap.CANTalon2);
@@ -28,20 +31,20 @@ public class Chassis extends Subsystem {
 		rightMotor2 = new CANTalon(RobotMap.CANTalon5);
 		rightMotor3 = new CANTalon(RobotMap.CANTalon6);
 		
-		leftMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		leftMotor2.setPID(.2, 0, 0);
-		leftMotor1.changeControlMode(TalonControlMode.Follower);
-		leftMotor1.set(leftMotor2.getDeviceID());
-		leftMotor3.changeControlMode(TalonControlMode.Follower);
-		leftMotor3.set(leftMotor2.getDeviceID());
+		limitSwitch = new DigitalInput(RobotMap.limitSwitch);
 		
-		rightMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
-		rightMotor2.setPID(.2, 0, 0);
-		rightMotor1.changeControlMode(TalonControlMode.Follower);
-		rightMotor1.set(rightMotor2.getDeviceID());
-		rightMotor3.changeControlMode(TalonControlMode.Follower);
-		rightMotor3.set(rightMotor2.getDeviceID());
-		
+//		leftMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+//		leftMotor2.setPID(.2, 0, 0);
+//		leftMotor1.changeControlMode(TalonControlMode.Follower);
+//		leftMotor1.set(leftMotor2.getDeviceID());
+//		leftMotor3.changeControlMode(TalonControlMode.Follower);
+//		leftMotor3.set(leftMotor2.getDeviceID());
+//		rightMotor2.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+//		rightMotor2.setPID(.2, 0, 0);
+//		rightMotor1.changeControlMode(TalonControlMode.Follower);
+//		rightMotor1.set(rightMotor2.getDeviceID());
+//		rightMotor3.changeControlMode(TalonControlMode.Follower);
+//		rightMotor3.set(rightMotor2.getDeviceID());
 		
 		Util.timeStamp("Chassis");
 	}//End Chassis
@@ -92,6 +95,10 @@ public class Chassis extends Subsystem {
 		return rightMotor2.getPosition();
 	}
 
+	public boolean limitSwitchFeedback(){
+		return limitSwitch.get();
+	}
+	
 	public void Stop(){
 		leftMotor1.set(0);
 		leftMotor2.set(0);

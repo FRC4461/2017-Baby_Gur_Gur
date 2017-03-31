@@ -8,6 +8,9 @@ public class RobotMap {
 	 */
 	public static final int
 	
+	//Limit Switch
+	limitSwitch = 0,
+	
 	//Drivebase Motors
 	CANTalon1 = 1,
 	CANTalon2 = 2,
