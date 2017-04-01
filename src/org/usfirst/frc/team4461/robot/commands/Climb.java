@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4461.robot.commands;
 
+import org.usfirst.frc.team4461.robot.OI;
 import org.usfirst.frc.team4461.robot.Robot;
 import org.usfirst.frc.team4461.robot.Util;
 
@@ -25,7 +26,7 @@ public class Climb extends Command {
 
     @Override
     protected boolean isFinished() {
-    	return (!Robot.oi.rightButton4.get() && Robot.RopeClimber.StopAtSurge());
+    	return (!OI.rightButton4.get() && Robot.RopeClimber.StopAtSurge());
 	}
 
     @Override

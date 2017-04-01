@@ -41,7 +41,8 @@ public class RobotMap {
 	rightButton1 = 1,
 	rightButton2 = 2,
 	rightButton3 = 3,
-	rightButton4 = 4;// LAST ONE HAS TO BE ;
+	rightButton4 = 4,
+	rightButton5 = 5; //Last one has to be
 
 	public RobotMap(){
 		Util.timeStamp("RobotMap Init");

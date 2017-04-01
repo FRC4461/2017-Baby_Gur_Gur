@@ -26,7 +26,9 @@ public class OI {
 	public static JoystickButton rightButton1, 
 								 rightButton2,
 								 rightButton3,
-								 rightButton4;
+								 rightButton4,
+								 rightButton5;
+	
 	
 	
 	public OI(){
@@ -38,10 +40,14 @@ public class OI {
 		rightButton1 = new JoystickButton(rightJoystick, RobotMap.rightButton1);
 		rightButton2 = new JoystickButton(rightJoystick, RobotMap.rightButton2);
 		rightButton3 = new JoystickButton(rightJoystick, RobotMap.rightButton3);
+		rightButton4 = new JoystickButton(rightJoystick, RobotMap.rightButton4);
+		rightButton5 = new JoystickButton(rightJoystick, RobotMap.rightButton5);
 		
 		rightButton1.toggleWhenPressed(new HopperTake());
 		rightButton2.toggleWhenPressed(new HopperShoot());
-		rightButton3.toggleWhenPressed(new Climb());
+		Climb ClimbAction = new Climb();
+		rightButton3.whenPressed(ClimbAction);
+		rightButton5.cancelWhenPressed(ClimbAction);
 		
 		Util.timeStamp("OI INITIALIZED");
 	}//End OI
