@@ -22,7 +22,7 @@ public class voltageMove extends Command {
     }
     
     protected void execute() {
-		Util.timeStamp("MOOOOVEEE PLLZZZZ");
+		Util.timeStamp("Moving");
 		if(motorForward){
 	    	double lSpeed = .2325;
 	    	double rSpeed = .2;

@@ -11,6 +11,7 @@ import org.usfirst.frc.team4461.robot.commands.RedShoot1;
 import org.usfirst.frc.team4461.robot.commands.RedShoot2;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
+import org.usfirst.frc.team4461.robot.subsystems.RopeClimber;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 
 	//Initializing Subsystems
 	public static HopperMotors HopperMotors = new HopperMotors();
+	public static RopeClimber RopeClimber = new RopeClimber();
 	public static Chassis Chassis = new Chassis();
 	public static OI oi = new OI();
 	

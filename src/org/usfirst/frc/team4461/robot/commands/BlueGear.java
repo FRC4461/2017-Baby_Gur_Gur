@@ -12,5 +12,7 @@ public class BlueGear extends CommandGroup {
     	addSequential(new Vision());
     	addSequential(new voltageMove(10, true));
     	addSequential(new voltageMove(3, false));
+    	addSequential(new AutoTurn(true));
+    	addSequential(new voltageMove(5, true));
     }
 }
