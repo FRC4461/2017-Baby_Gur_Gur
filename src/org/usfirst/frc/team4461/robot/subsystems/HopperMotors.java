@@ -12,9 +12,9 @@ public class HopperMotors extends Subsystem {
 	CANTalon Intake;
 	
 	public HopperMotors(){
-		Shooter = new CANTalon(RobotMap.CANTalon7);
-		Shooter2 = new CANTalon(RobotMap.CANTalon8);
-		Intake = new CANTalon(RobotMap.CANTalon9);
+		Shooter = new CANTalon(RobotMap.CANTalon8);
+		Shooter2 = new CANTalon(RobotMap.CANTalon9);
+		Intake = new CANTalon(RobotMap.CANTalon10);
 	}
 	
     public void initDefaultCommand() {

@@ -25,7 +25,7 @@ public class RobotMap {
 	CANTalon9 = 9,
 	
 	//Rope Climber Motor
-	Cantalon10 = 10,
+	CANTalon10 = 10,
 	
 	//Joysticks
 	leftJoystick = 0,

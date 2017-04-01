@@ -18,7 +18,7 @@ public class Climb extends Command {
 
     @Override
     protected void execute() {
-    	Robot.RopeClimber.Climb();
+        Robot.RopeClimber.Climb();	
     	Util.timeStamp("Climber Current" + Robot.RopeClimber.GetCurrent());
     	Util.timeStamp("Climber Voltage" +  Robot.RopeClimber.GetVoltage());
     	Util.timeStamp("Climber Wattage" + Robot.RopeClimber.GetWatts());
@@ -26,7 +26,13 @@ public class Climb extends Command {
 
     @Override
     protected boolean isFinished() {
-    	return (!OI.rightButton4.get() && Robot.RopeClimber.StopAtSurge());
+    	if(OI.leftButton1.get()){
+    		return true;
+    	}
+    	else if(!OI.rightButton4.get() && Robot.RopeClimber.StopAtSurge()){
+    		return true;
+    	}
+    	return false;
 	}
 
     @Override

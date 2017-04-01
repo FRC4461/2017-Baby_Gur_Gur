@@ -10,10 +10,10 @@ public class RopeClimber extends Subsystem {
 	CANTalon Climber;
 	
 	//Electricity
-	double WattageSurge = 2800;
+	double WattageSurge = 600;
 	
 	public RopeClimber(){
-		Climber = new CANTalon(RobotMap.Cantalon10);
+		Climber = new CANTalon(RobotMap.CANTalon7);
 	}
 	
     public void initDefaultCommand() {
@@ -21,7 +21,7 @@ public class RopeClimber extends Subsystem {
     }//End Default Command
     
     public void Climb(){
-    	double Speed = 1;
+    	double Speed = -.8;
     	Climber.set(Speed);
     }//End Climb
     

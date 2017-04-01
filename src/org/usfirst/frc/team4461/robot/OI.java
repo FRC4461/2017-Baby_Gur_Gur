@@ -3,7 +3,6 @@ package org.usfirst.frc.team4461.robot;
 import org.usfirst.frc.team4461.robot.commands.Climb;
 import org.usfirst.frc.team4461.robot.commands.HopperShoot;
 import org.usfirst.frc.team4461.robot.commands.HopperTake;
-import org.usfirst.frc.team4461.robot.subsystems.RopeClimber;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -47,7 +46,7 @@ public class OI {
 		rightButton2.toggleWhenPressed(new HopperShoot());
 		Climb ClimbAction = new Climb();
 		rightButton3.whenPressed(ClimbAction);
-		rightButton5.cancelWhenPressed(ClimbAction);
+		leftButton1.cancelWhenPressed(ClimbAction);
 		
 		Util.timeStamp("OI INITIALIZED");
 	}//End OI
