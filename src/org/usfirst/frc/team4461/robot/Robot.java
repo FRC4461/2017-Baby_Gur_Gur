@@ -2,29 +2,20 @@ package org.usfirst.frc.team4461.robot;
 
 import org.usfirst.frc.team4461.robot.commands.AutonomousNothing;
 import org.usfirst.frc.team4461.robot.commands.AutonomousForward;
-import org.usfirst.frc.team4461.robot.commands.BlueGear;
-import org.usfirst.frc.team4461.robot.commands.BlueShoot1;
-import org.usfirst.frc.team4461.robot.commands.BlueShoot2;
-import org.usfirst.frc.team4461.robot.commands.MovingTapeAutonomous;
-import org.usfirst.frc.team4461.robot.commands.RedGear;
-import org.usfirst.frc.team4461.robot.commands.RedShoot1;
-import org.usfirst.frc.team4461.robot.commands.RedShoot2;
+import org.usfirst.frc.team4461.robot.commands.leftGear;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
-import org.usfirst.frc.team4461.robot.subsystems.HopperMotors;
 import org.usfirst.frc.team4461.robot.subsystems.RopeClimber;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 
 	//Initializing Subsystems
-	public static HopperMotors HopperMotors = new HopperMotors();
 	public static RopeClimber RopeClimber = new RopeClimber();
 	public static Chassis Chassis = new Chassis();
 	public static OI oi = new OI();
@@ -39,24 +30,14 @@ public class Robot extends IterativeRobot {
 		timeChooser = new SendableChooser<Integer>();
 		timeChooser.addDefault("0 Seconds", 0);
 		timeChooser.addObject("1 Second", 1);
-		timeChooser.addObject("2 Seconds", 2);
-		timeChooser.addObject("3 Seconds", 3);
 		timeChooser.addObject("5 Seconds", 5);
-		timeChooser.addObject("7 Seconds", 7);
 		timeChooser.addObject("10 Seconds", 10);
-		autoChooser.addObject("Red Shoot 1", new RedShoot1());
-		autoChooser.addObject("Red Shoot 2", new RedShoot2());
-		autoChooser.addObject("Blue Shoot 1", new BlueShoot1());
-		autoChooser.addObject("Blue Shoot 2", new BlueShoot2());
 		autoChooser.addDefault("Nothing", new AutonomousNothing());
-		autoChooser.addObject("MovingTape", new MovingTapeAutonomous());
-		autoChooser.addObject("Red Gear", new RedGear());
-		autoChooser.addObject("Blue Gear", new BlueGear());
+		autoChooser.addObject("Left Gear", new leftGear());
 		autoChooser.addObject("Autonomous Forward", new AutonomousForward());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 		SmartDashboard.putData("Autonomous mode time chooser", timeChooser);
 		CameraServer.getInstance().startAutomaticCapture(0);
-//		CameraServer.getInstance().startAutomaticCapture(1);
 		Util.timeStamp("ROBOT robotInit");
 	}//End robotInit
 

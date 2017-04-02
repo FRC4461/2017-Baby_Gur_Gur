@@ -8,40 +8,21 @@ public class RopeClimber extends Subsystem {
 	
 	//Initializing Talon
 	CANTalon Climber;
-	
-	//Electricity
-	double WattageSurge = 600;
-	
+
 	public RopeClimber(){
-		Climber = new CANTalon(RobotMap.CANTalon7);
+		Climber = new CANTalon(RobotMap.CANTalon8);
 	}
 	
     public void initDefaultCommand() {
     	System.out.println("4461: Rope Climber.java");
     }//End Default Command
     
-    public void Climb(){
-    	double Speed = -.8;
-    	Climber.set(Speed);
+    public void Climb(double cSpeed){
+    	Climber.set(-cSpeed);
     }//End Climb
     
     public void Stop(){
     	Climber.set(0);
     }//End Stop
-    
-    public double GetCurrent(){
-     	return Climber.getOutputCurrent();
-    }
 
-    public double GetVoltage(){
-     	return Climber.getOutputVoltage();
-    }
-
-    public double GetWatts(){
-     	return GetCurrent() * GetVoltage();
-    }
-    
-    public boolean StopAtSurge(){
-    	return (GetWatts() >= WattageSurge);
-    }
 }//End Class
