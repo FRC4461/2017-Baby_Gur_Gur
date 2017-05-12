@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4461.robot;
 
 import org.usfirst.frc.team4461.robot.commands.Climb;
-//import org.usfirst.frc.team4461.robot.commands.HopperShoot;
-//import org.usfirst.frc.team4461.robot.commands.HopperTake;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -11,9 +9,7 @@ public class OI {
 	
 	//Joysticks
 	public static Joystick leftJoystick, 
-						   rightJoystick,
-						   XBOXController;
-	
+						   rightJoystick;
 	
 	//Left Joystick Buttons
 	public static JoystickButton leftButton1, 
@@ -46,7 +42,9 @@ public class OI {
 		rightButton1.whenPressed(ClimbAction);
 		leftButton1.cancelWhenPressed(ClimbAction);
 		
+		
 		Util.timeStamp("OI INITIALIZED");
+		
 	}//End OI
 	
 	public static double lJoyGetY(){
@@ -68,4 +66,5 @@ public class OI {
 	public static double rJoyGetZ(){
 		return rightJoystick.getZ();
 	}
+
 }//End Class

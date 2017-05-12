@@ -5,7 +5,6 @@ import org.usfirst.frc.team4461.robot.Util;
 import org.usfirst.frc.team4461.robot.commands.Drive;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -19,7 +18,9 @@ public class Chassis extends Subsystem {
 					 leftMotor3,
 					 rightMotor1,
 					 rightMotor2,
-					 rightMotor3;
+					 rightMotor3,
+					 bottomShooter,
+					 topShooter;
 	
 	private DigitalInput limitSwitch;
 	
@@ -61,18 +62,18 @@ public class Chassis extends Subsystem {
 		leftMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		rightMotor3.changeControlMode(TalonControlMode.PercentVbus);
 		
-		leftMotor1.setVoltageRampRate(.5);
-		leftMotor2.setVoltageRampRate(.5);
-		leftMotor3.setVoltageRampRate(.5);
-		rightMotor1.setVoltageRampRate(.5);
-		rightMotor2.setVoltageRampRate(.5);
-		rightMotor3.setVoltageRampRate(.5);
+		leftMotor1.setVoltageRampRate(.3);
+		leftMotor2.setVoltageRampRate(.3);
+		leftMotor3.setVoltageRampRate(.3);
+		rightMotor1.setVoltageRampRate(.3);
+		rightMotor2.setVoltageRampRate(.3);
+		rightMotor3.setVoltageRampRate(.3);
 		
-		leftMotor1.set(lSpeed);
+		leftMotor1.set(rSpeed);
 		rightMotor1.set(-rSpeed);
-		leftMotor2.set(lSpeed);
+		leftMotor2.set(rSpeed);
 		rightMotor2.set(-rSpeed);
-		leftMotor3.set(lSpeed);
+		leftMotor3.set(rSpeed);
 		rightMotor3.set(-rSpeed);
 }
 
@@ -86,6 +87,11 @@ public class Chassis extends Subsystem {
 		rightMotor2.set(rightDistanceInTicks);
 }
 
+	public void shoot(double shooterSpeedOne, double shooterSpeedTwo){
+		topShooter.set(shooterSpeedOne);
+		bottomShooter.set(shooterSpeedTwo);
+	}
+		
 	
 	public double leftEncoderGet(){
 		return leftMotor2.getPosition();

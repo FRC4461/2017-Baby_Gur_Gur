@@ -14,8 +14,8 @@ public class Climb extends Command {
     }
 
     protected void execute() {
-    	double cSpeed = OI.rJoyGetZ();
-        Robot.RopeClimber.Climb(cSpeed);	
+//    	double cSpeed = OI.rJoyGetZ();
+//        Robot.RopeClimber.Climb(cSpeed);	
     }
 
     @Override

@@ -31,6 +31,17 @@ public class RobotMap {
 	leftJoystick = 0,
 	rightJoystick = 1,
 	
+	//XBOX Controller
+	XBoxController = 2,
+	
+	//XBOX Map
+	LeftStickX = 0,
+	LeftStickY = 1,
+	LeftTrigger = 2,
+	RightTrigger = 3,
+	RightStickX = 4,
+	RightStickY = 5,
+	
 	//Left Joystick Buttons
 	leftButton1 = 1,
 	leftButton2 = 2,
@@ -42,8 +53,8 @@ public class RobotMap {
 	rightButton2 = 2,
 	rightButton3 = 3,
 	rightButton4 = 4,
-	rightButton5 = 5; //Last one has to be
-
+	rightButton5 = 5;
+	
 	public RobotMap(){
 		Util.timeStamp("RobotMap Init");
 	}//End RobotMap

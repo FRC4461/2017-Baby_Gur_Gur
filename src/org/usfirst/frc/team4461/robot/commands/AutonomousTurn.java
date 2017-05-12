@@ -5,7 +5,7 @@ import org.usfirst.frc.team4461.robot.Util;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class AutoTurn extends Command {
+public class AutonomousTurn extends Command {
 
 	double runTime = 0;
 	double timeInitialized = 0;
@@ -19,7 +19,7 @@ public class AutoTurn extends Command {
 	 *  TRUE = Turn left
 	 *  FALSE = Turn right
 	 */
-    public AutoTurn(double timeArg , boolean turnArg) {
+    public AutonomousTurn(double timeArg , boolean turnArg) {
     	requires(Robot.Chassis);
     	runTime = timeArg;
     	turnLeft = turnArg; 

@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4461.robot;
 
 import org.usfirst.frc.team4461.robot.commands.AutonomousNothing;
+import org.usfirst.frc.team4461.robot.commands.LeftGear;
 import org.usfirst.frc.team4461.robot.commands.AutonomousForward;
-import org.usfirst.frc.team4461.robot.commands.leftGear;
 import org.usfirst.frc.team4461.robot.subsystems.Chassis;
 import org.usfirst.frc.team4461.robot.subsystems.RopeClimber;
 
@@ -33,11 +33,12 @@ public class Robot extends IterativeRobot {
 		timeChooser.addObject("5 Seconds", 5);
 		timeChooser.addObject("10 Seconds", 10);
 		autoChooser.addDefault("Nothing", new AutonomousNothing());
-		autoChooser.addObject("Left Gear", new leftGear());
+		autoChooser.addObject("Left Gear", new LeftGear());
 		autoChooser.addObject("Autonomous Forward", new AutonomousForward());
 		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
 		SmartDashboard.putData("Autonomous mode time chooser", timeChooser);
 		CameraServer.getInstance().startAutomaticCapture(0);
+		CameraServer.getInstance().startAutomaticCapture(1);
 		Util.timeStamp("ROBOT robotInit");
 	}//End robotInit
 
@@ -75,8 +76,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		Util.timeStamp("Left Encoder Value"+Robot.Chassis.leftEncoderGet());
-		Util.timeStamp("Right Encoder Value"+Robot.Chassis.rightEncoderGet());
 	}//End teleopPeriodic
 
 	@Override
